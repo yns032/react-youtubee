@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import HomeCart from '../components/HomeCart'
 import Filter from '../components/Filter'
 import { useDispatch, useSelector } from 'react-redux'
+import homeAction from '../redux/actions/HomeData'
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -16,14 +17,13 @@ const Home = () => {
         <div className='m-3'>
             <Filter />
             <div className='flex flex-wrap m-2 '>
-                <HomeCart />
-                <HomeCart />
-                <HomeCart />
-                <HomeCart />
-                <HomeCart />
-                <HomeCart />
-                <HomeCart />
-                <HomeCart />
+
+                {getVideos && getVideos.items && getVideos.items.map((video, i) => (
+                    <HomeCart key={i} video={video} />
+                ))
+
+                }
+
             </div>
 
         </div>

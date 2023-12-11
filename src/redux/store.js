@@ -1,8 +1,8 @@
-import { applyMiddleware, combineReducers } from "@reduxjs/toolkit"
+import { applyMiddleware, createStore, combineReducers } from "redux"
 import thunk from "redux-thunk"
-import { createStore } from "redux"
 import homeReducer from "./reducers/HomeData"
 import { composeWithDevTools } from "redux-devtools-extension"
+import detailReducer from "./reducers/Detail"
 
 
 
@@ -11,7 +11,8 @@ let initialState = {
 }
 
 let reducers = combineReducers({
-    getVideos: homeReducer
+    getVideos: homeReducer,
+    getVideo: detailReducer
 })
 
 const store = createStore(reducers, initialState, composeWithDevTools(applyMiddleware(thunk)))
